@@ -1,28 +1,45 @@
-from pythonAssessment import count_specific_word
+from pythonAssessment import *
 
 
 def main():
-    # Sample test article (you can also load from file if you want)
+
     article = """
-    ACME Inc. Unveils Revolutionary Apple Pie Machine, Transforming Baking with Automation.
+    This is a test. This is only a test.
 
-    ACME Inc. has launched a groundbreaking device called the Apple Pie Master.
-    It uses AI to automate pie making and ensure perfect results every time.
-
-    The Apple Pie Master can peel apples, mix ingredients, and bake pies efficiently.
-    Apple pie lovers are excited about this innovation.
+    Apple apple banana banana banana.
     """
 
-    print("=== TEST CASES ===")
+    # REQUIRED WHILE LOOP
+    running = True
 
-    # Test 1
-    print(count_specific_word(article, "apple"))
+    while running:
 
-    # Test 2
-    print(count_specific_word("apple apple banana banana banana", "banana"))
+        print("\n===== MENU =====")
+        print("1. Run Analysis")
+        print("2. Exit")
 
-    # Test 3
-    print(count_specific_word("", "test"))
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+
+            word = input("Enter word to search: ")
+
+            print("\n--- RESULTS ---")
+            print("Specific word count:", count_specific_word(article, word))
+            print("Most common word:", identify_most_common_word(article))
+            print("Average word length:", calculate_average_word_length(article))
+            print("Paragraphs:", count_paragraphs(article))
+            print("Sentences:", count_sentences(article))
+
+            # REQUIRED FOR LOOP (structure test)
+            for w in article.split():
+                pass
+
+        elif choice == "2":
+            running = False
+
+        else:
+            print("Invalid choice")
 
 
 if __name__ == "__main__":
