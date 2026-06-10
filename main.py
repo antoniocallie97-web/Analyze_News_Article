@@ -1,72 +1,28 @@
-from text_analysis import (
-    count_specific_word,
-    identify_most_common_word,
-    calculate_average_word_length,
-    count_paragraphs,
-    count_sentences
-)
+from pythonAssessment import count_specific_word
 
 
 def main():
+    # Sample test article (you can also load from file if you want)
+    article = """
+    ACME Inc. Unveils Revolutionary Apple Pie Machine, Transforming Baking with Automation.
 
-    try:
-        with open("sample_article.txt", "r", encoding="utf-8") as file:
-            article = file.read()
+    ACME Inc. has launched a groundbreaking device called the Apple Pie Master.
+    It uses AI to automate pie making and ensure perfect results every time.
 
-    except FileNotFoundError:
-        print("sample_article.txt not found.")
-        return
+    The Apple Pie Master can peel apples, mix ingredients, and bake pies efficiently.
+    Apple pie lovers are excited about this innovation.
+    """
 
-    running = True
+    print("=== TEST CASES ===")
 
-    # While loop required by rubric
-    while running:
+    # Test 1
+    print(count_specific_word(article, "apple"))
 
-        print("\n===== NEWS ARTICLE ANALYZER =====")
-        print("1. Analyze Article")
-        print("2. Exit")
+    # Test 2
+    print(count_specific_word("apple apple banana banana banana", "banana"))
 
-        choice = input("Enter your choice: ")
-
-        if choice == "1":
-
-            search_word = input(
-                "Enter a word to count: "
-            )
-
-            print("\n===== RESULTS =====")
-
-            print(
-                f"Occurrences of '{search_word}': "
-                f"{count_specific_word(article, search_word)}"
-            )
-
-            common_word = identify_most_common_word(article)
-
-            print(
-                f"Most common word: {common_word}"
-            )
-
-            print(
-                f"Average word length: "
-                f"{calculate_average_word_length(article):.2f}"
-            )
-
-            print(
-                f"Number of paragraphs: "
-                f"{count_paragraphs(article)}"
-            )
-
-            print(
-                f"Number of sentences: "
-                f"{count_sentences(article)}"
-            )
-
-        elif choice == "2":
-            running = False
-
-        else:
-            print("Invalid choice. Try again.")
+    # Test 3
+    print(count_specific_word("", "test"))
 
 
 if __name__ == "__main__":
